@@ -26,29 +26,20 @@
 #define D4  4
 
 WiFiClient client;
-//
-//char* ssid           =  "i Technology";
-//char* password       =  "qwerty1234"; 
-//char* password       =  "12345678"; 
 
-//char* ssid     = "JioFiber-exyKz";        //"**LMB-HZW-M/C**";**LMB-HZW-WCMS**
-//char* password = "ahm2cai7QuahShib";
 
-//const char* IP       =  "i-technology.in";//  "192.168.1.7";//"192.168.1.2";//
-//const int  PORT      =  80;//45455;//
-
-char* ssid     = "**LMB-HZW-WCMS**"; //"**LMB-HZW-M/C**";**LMB-HZW-WCMS**
-//char* password = "Power@1234";
-char* IP       = "10.7.74.158";
+char* ssid     = "your ssid"; //"**LMB-HZW-M/C**";**LMB-HZW-WCMS**
+//char* password = "your password";
+char* IP       = "000.000.000.000"; // server ip
 int  PORT      = 80;
 
 
-char *access_point   = "**LMB-HZW-WCMS**";
-char *password       = "Power@1234";
-char *access_point_2 = "**LMB-HZW-WCMS**";
-char *access_point_3 = "**LMB-HZW-WCMS**";
-char *access_point_4 = "i Technology";
-char *itech_pass     = "qwerty1234";
+char *access_point   = "your ssid 1";
+char *password       = "password@1234";
+char *access_point_2 = "your ssid 2";
+char *access_point_3 = "your ssid 3";
+char *access_point_4 = "your ssid 4";
+char *itech_pass     = "password@1234";
 
 
 WiFiMulti wifiMulti;
@@ -188,18 +179,12 @@ void Data_Send(String Data_str,int drive){
 
 int sendData(String url, String postData)
 { 
-//  url = "http://www.i-technology.in/BOILER_CMS/Home/SaveIotDriverReading";
-  
-  url = "http://10.7.74.158/Boiler_CMS/Home/SaveIotDriverReading";
-//  postData = Drive_1_status +","+Drive_2_status +","+Drive_3_status +","+Drive_4_status;
-  Serial_monitor.print("Request URL ->" + url);
-  
-//  Serial_monitor.println(url); //Post Data
+  url = "http://111.7.74.158/Boiler_CMS/Home/SaveIotDriverReading"; 
+  Serial_monitor.print("Request URL ->" + url); 
   String address =  url;
   WiFiClient client;
 //  WiFiClientSecure client;
-  HTTPClient http;
-
+  HTTPClient http; 
 //  client.setCACert(root_ca);
   Serial_monitor.println("\nStarting connection to server...");
   if (!client.connect(IP, PORT)) {
@@ -538,6 +523,7 @@ void check_response(String str){
   bool resetFlag = doc["resetFlag"];
   Fault_1 = doc["responseMessage"]["FAULT_REGISTERS"][0];
   Fault_2 = doc["responseMessage"]["FAULT_REGISTERS"][1];
+ 
   Serial_monitor.print("errorMessage:\t ");   Serial_monitor.print(errorMessage);
   Serial_monitor.print("responseStatus:\t "); Serial_monitor.println(responseStatus);
   Serial_monitor.print("resetFlag: \t");      Serial_monitor.println(resetFlag);
@@ -553,8 +539,7 @@ void check_response(String str){
   }
 }
 
-int SD_Wifi_Configuration(void){
-/*   
+int SD_Wifi_Configuration(void){  
    readFile("/file_pwd.txt");   
 //   file_pwd = "";
    for(int i=0;ReadString[i];i++)
@@ -648,9 +633,6 @@ int SD_Wifi_Configuration(void){
      ip = WiFi.localIP();
     Serial_monitor.println(ip);
     }
-    */
-//    file_ssid = "**LMB-HZW-WCMS**";
-//    file_pwd =  "Power@1234";
-//    IP = "10.7.74.158";
-//    PORT      = 80;
+    
+
 }
