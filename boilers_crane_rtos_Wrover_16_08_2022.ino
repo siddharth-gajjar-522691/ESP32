@@ -47,14 +47,7 @@ void setup()
   pinMode(MH,INPUT_PULLUP);
   pinMode(AH,INPUT_PULLUP);  
   delay(100);
-  /*
-   * INITIALIZE MODBUS HERE
-   */
-   
-//  WriteFile("0","/AH_OT2.txt");
-//  WriteFile("0","/MH_OT2.txt");
-//  WriteFile("0","/LT_OT2.txt");
-//  WriteFile("0","/CT_OT2.txt");
+  
         
   xTaskCreatePinnedToCore(DRIVE_ACTIVE_TASK       ,"ReadDriveActivity"    ,25720 , NULL , 3 ,  NULL  ,  ARDUINO_RUNNING_CORE);
   xTaskCreatePinnedToCore(MODBUS_READ_TASK        ,"ReadModbusSlaves"     ,45720 , NULL , 3 ,  NULL  ,  ARDUINO_RUNNING_CORE);
@@ -116,7 +109,7 @@ void MODBUS_READ_TASK(void *pvParameters)  // This is a task.
   init_modbus_packet();  
   Fault_Monitor();  
   modbus_configuration();
-   modbus_configuration();
+  modbus_configuration();  // making Sure it is done
   KWH_packets();
   init_modbus_packet();  
   Operation_time_read();
